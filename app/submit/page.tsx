@@ -1,0 +1,25 @@
+import SectionHeader from "@/components/common/section-header"
+import { SparklesIcon } from "lucide-react"
+import ProductSubmitForm from "@/components/products/product-submit-form"
+
+const SubmitPage = () => {
+    return (
+        <section className="py-20">
+            <div className="wrapper">
+                <div className="mb-12">
+                    <SectionHeader
+                        title="Submit Your Product"
+                        icon={SparklesIcon}
+                        description="Share your creation with the community. Your submission will be reviewed before going live."
+                    />
+                </div>
+                <div className="max-w-2xl mx-auto">
+                    <ProductSubmitForm />
+                </div>
+            </div>
+
+        </section>
+    )
+}
+
+export default SubmitPage
