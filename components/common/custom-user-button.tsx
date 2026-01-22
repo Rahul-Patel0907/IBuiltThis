@@ -1,10 +1,12 @@
 'use client';
-import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import { BuildingIcon, Building2Icon, LayoutDashboard } from "lucide-react";
+import { OrganizationSwitcher, UserButton, useUser } from "@clerk/nextjs";
+import { BuildingIcon, Building2Icon, LayoutDashboard, LockIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
 
 export default function CustomUserButton() {
+    const { user } = useUser();
+    const isAdmin = user?.unsafeMetadata?.role === "admin";
     return (
         <UserButton>
 
@@ -32,25 +34,39 @@ export default function CustomUserButton() {
                         </p>
                     </div>
 
-                    <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 bg-primary/10 rounded-md text-primary">
-                                <Building2Icon className="size-5" />
-                            </div>
-                            <div>
-                                <p className="font-medium text-sm">Privileged Access</p>
-                                <p className="text-xs text-muted-foreground">You have admin permissions</p>
+                    {!isAdmin ? (
+                        <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-primary/10 rounded-md text-primary">
+                                    <LockIcon className="size-5" />
+                                </div>
+                                <div>
+                                    <p className="font-medium text-sm">Restricted Access</p>
+                                    <p className="text-xs text-muted-foreground">You do not have admin permissions</p>
+                                </div>
                             </div>
                         </div>
-                        <Button
-                            className="w-full gap-2"
-                            size="lg"
-                            onClick={() => window.location.href = "/admin"}
-                        >
-                            <LayoutDashboard className="size-4" />
-                            Open Admin Panel
-                        </Button>
-                    </div>
+                    ) : (
+                        <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-primary/10 rounded-md text-primary">
+                                    <Building2Icon className="size-5" />
+                                </div>
+                                <div>
+                                    <p className="font-medium text-sm">Privileged Access</p>
+                                    <p className="text-xs text-muted-foreground">You have admin permissions</p>
+                                </div>
+                            </div>
+                            <Button
+                                className="w-full gap-2"
+                                size="lg"
+                                onClick={() => window.location.href = "/admin"}
+                            >
+                                <LayoutDashboard className="size-4" />
+                                Open Admin Panel
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </UserButton.UserProfilePage>
         </UserButton>

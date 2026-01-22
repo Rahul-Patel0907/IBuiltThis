@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Top Face: Pure White -->
+  <path fill="#FFFFFF" d="M256 0L52 118l204 118l204-118L256 0z"/>
+  
+  <!-- Right Face: White with 60% Opacity (shows pink through) -->
+  <path fill="#FFFFFF" fill-opacity="0.6" d="M256 236v276l204-118V118L256 236z"/>
+  
+  <!-- Left Face: White with 30% Opacity (shows more pink through) -->
+  <path fill="#FFFFFF" fill-opacity="0.4" d="M0 118v276l204 118V236L0 118z"/>
+</svg>

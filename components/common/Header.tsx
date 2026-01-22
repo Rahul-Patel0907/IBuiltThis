@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link"
+import Image from "next/image"
 import { HomeIcon, CompassIcon, SparklesIcon, Sparkles } from "lucide-react"
 import { Button } from "../ui/button"
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs"
@@ -9,8 +10,8 @@ import CustomUserButton from "./custom-user-button"
 const Logo = () => {
     return (
         <Link href="/" className="flex items-center gap-2 group">
-            <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
-                <SparklesIcon className="size-4 text-primary-foreground" />
+            <div className="size-8 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
+                <Image src="/logo.svg" alt="iBuiltThis Logo" width={32} height={32} className="object-contain p-1" />
             </div>
             <span className="text-xl font-bold">i<span className="text-primary">Built</span>This</span>
         </Link>
