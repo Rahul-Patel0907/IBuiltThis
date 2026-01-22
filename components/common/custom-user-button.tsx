@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 
 export default function CustomUserButton() {
     const { user } = useUser();
-    const isAdmin = user?.unsafeMetadata?.role === "admin";
+    const isAdmin = user?.publicMetadata?.isAdmin === true;
     return (
         <UserButton>
 
